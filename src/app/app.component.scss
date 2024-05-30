@@ -4,6 +4,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: $blue;
+    color: #fff;
 
     .system-action-user {
         display: flex;
@@ -17,6 +19,7 @@
         display: flex;
         gap: .6rem;
         cursor: pointer;
+        color: #fff;
     }
 }
 
@@ -24,23 +27,22 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    background: #888;
+    background: $blue;
 
     a {
         padding: 1rem 2rem;
         text-decoration: none;
         color: #fff;
         font-weight: 400;
-        margin-top: .4rem;
 
         &:hover {
-            background: #fff;
-            color: #000;
+            background: $blue-light;
+            color: #fff;
         }
 
         &.active {
-            background: #fff;
-            color: #000;
+            background: $blue-light;
+            color: #fff;
         }
     }
 }

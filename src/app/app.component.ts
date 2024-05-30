@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faBell, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
+import { faBell, faFileLines, faFolder, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +14,7 @@ import { faBell, faUser } from '@fortawesome/free-solid-svg-icons';
 export class AppComponent {
   user = faUser
   bell = faBell
+
+  files = faFileLines
+  calendar = faCalendarAlt
 }
