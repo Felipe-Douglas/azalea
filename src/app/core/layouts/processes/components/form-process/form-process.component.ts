@@ -2,18 +2,22 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ModalComponent } from '../../../../components/modal/modal.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faMinus, faTrash, faTrashCan, faTrashRestoreAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'form-process',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ModalComponent],
+  imports: [CommonModule, ReactiveFormsModule, ModalComponent, FontAwesomeModule],
   templateUrl: './form-process.component.html',
   styleUrl: './form-process.component.scss'
 })
 export class FormProcessComponent implements OnInit {
   processForm!: FormGroup;
   isVisible: boolean = false;
+  trash = faTrashCan
 
+  
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
