@@ -2,13 +2,16 @@
 <app-modal [isVisible]="isVisible" (closeModal)="closeModal()" title-modal="Cadastro de processos">
     <form [formGroup]="processForm" (ngSubmit)="ngSubmit()">
         <label for="number">Número</label>
-        <input type="text" formControlName="number" id="number">
+        <input type="text" formControlName="number" id="number" (keypress)="onKeyPress($event)">
 
         <div formGroupName="parties" class="parties">
             <div class="plaintiff">
                 <label for="plaintiff">Autor</label>
                 <input type="text" formControlName="plaintiff" id="plaintiff">
-
+            </div>
+            <div class="plaintiffId">
+                <label for="plaintiffId">CPF do Autor</label>
+                <input type="text" formControlName="plaintiffId" id="plaintiffId" (keypress)="onKeyPress($event)">
             </div>
             <div class="defendant">
                 <label for="defendant">Réu</label>

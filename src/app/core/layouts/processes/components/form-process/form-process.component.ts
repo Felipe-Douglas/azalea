@@ -25,6 +25,7 @@ export class FormProcessComponent implements OnInit {
       number: ['', Validators.required],
       parties: this.formBuilder.group({
         plaintiff: ['', Validators.required],
+        plaintiffId: ['', Validators.required],
         defendant: ['', Validators.required]
       }),
       court: ['', Validators.required],
@@ -59,6 +60,16 @@ export class FormProcessComponent implements OnInit {
 
   closeModal() {
     this.isVisible = false;
+  }
+
+  onKeyPress(event: KeyboardEvent) {
+    const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab'];
+    const keyCode = event.keyCode || event.which;
+    const keyValue = String.fromCharCode(keyCode);
+
+    if (!/^[0-9]*$/.test(keyValue) && allowedKeys.indexOf(event.key) === -1) {
+      event.preventDefault();
+    }
   }
 
   ngSubmit() {}
