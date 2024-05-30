@@ -14,6 +14,8 @@ import { faMinus, faTrash, faTrashCan, faTrashRestoreAlt } from '@fortawesome/fr
 })
 export class FormProcessComponent implements OnInit {
   processForm!: FormGroup;
+  progressOptions: string[] = ['Iniciado', 'Em Progresso', 'Concluído'];
+
   isVisible: boolean = false;
   trash = faTrashCan
 
@@ -32,7 +34,7 @@ export class FormProcessComponent implements OnInit {
       bench: ['', Validators.required],
       natureOfAction: ['', Validators.required],
       description: [''],
-      progress: this.formBuilder.array([]),
+      progress: ['', Validators.required],
       documents: this.formBuilder.array([]),
       deadlines: this.formBuilder.array([]),
       tags: this.formBuilder.array([])
@@ -72,6 +74,12 @@ export class FormProcessComponent implements OnInit {
     }
   }
 
-  ngSubmit() {}
+  ngSubmit() {
+    if(this.processForm.valid) {
+      console.log(this.processForm.value);
+    }else {
+      console.log('Form Invalid');
+    }
+  }
 
 }
