@@ -1,0 +1,41 @@
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($color: #000000, $alpha: 0.5);
+    z-index: 999;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+
+    &.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .modal-content {
+        background: #fff;
+        padding: 2rem;
+        border-radius: .5rem;
+        width: 80%;
+        max-width: 60rem;
+        position: relative;
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            padding: 2rem 0;
+
+            .close {
+                font-size: 2.4rem;
+                cursor: pointer;
+            }
+        }
+    }
+}

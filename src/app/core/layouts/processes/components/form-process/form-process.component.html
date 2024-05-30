@@ -1,0 +1,75 @@
+<button (click)="openModal()">Add Processo</button>
+<app-modal [isVisible]="isVisible" (closeModal)="closeModal()" title="Cadastro de Processo">
+    <form [formGroup]="processForm" (ngSubmit)="ngSubmit()">
+        <label for="number">Número</label>
+        <input type="text" formControlName="number" id="number">
+
+        <div formGroupName="parties">
+            <label for="plaintiff">Autor</label>
+            <input type="text" formControlName="plaintiff" id="plaintiff">
+
+            <label for="defendant">Réu</label>
+            <input type="text" formControlName="defendant" id="defendant">
+        </div>
+
+        <label for="court">Tribunal</label>
+        <input type="text" formControlName="court" id="court">
+
+        <label for="bench">Vara</label>
+        <input type="text" formControlName="bench" id="bench">
+
+        <label for="natureOfAction">Natureza da Ação</label>
+        <input type="text" formControlName="natureOfAction" id="natureOfAction">
+
+        <label for="description">Descrição</label>
+        <textarea formControlName="description" id="description"></textarea>
+
+        <div class="progress">
+            <button (click)="addItem('progress')">Add Progress</button>
+            <div formArrayName="progress">
+                <div *ngFor="let item of getArrayControls('progress'); let i = index">
+                    <input type="text" [formControlName]="i" placeholder="Processo {{ i + 1 }}">
+                    <button (click)="removeItem('progress', i)">Remove Progress</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="documents">
+            <button (click)="addItem('documents')">Add Document</button>
+            <div formArrayName="documents">
+                <div *ngFor="let item of getArrayControls('documents'); let i = index">
+                    <input type="file" [formControlName]="i" placeholder="Documentos {{ i + 1 }}">
+                    <button (click)="removeItem('documents', i)">Remove Document</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="deadlines">
+            <button (click)="addItem('deadlines')">Add Deadlines</button>
+            <div formArrayName="deadlines">
+                <div *ngFor="let item of getArrayControls('deadlines'); let i = index">
+                    <input type="text" placeholder="Categoria">
+                    <input type="date" [formControlName]="i" placeholder="Prazo {{ i + 1 }}">
+                    <button (click)="removeItem('deadlines', i)">Remove Deadlines</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tags">
+            <button (click)="addItem('tags')">Add Tags</button>
+            <div formArrayName="tags">
+                <div *ngFor="let item of getArrayControls('tags'); let i = index">
+                    <input type="text" [formControlName]="i" placeholder="Tag {{ i + 1 }}">
+                    <button (click)="removeItem('tags', i)">Remove Tags</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div formArrayName="documents">
+            <div *ngFor="let item of getArrayControls('documents'); let i = index">
+                <input [formControlName]="i" placeholder="Documento {{ i + 1}}">
+            </div>
+        </div> -->
+
+    </form>
+</app-modal>
