@@ -1,15 +1,19 @@
 <button (click)="openModal()">Add Processo</button>
-<app-modal [isVisible]="isVisible" (closeModal)="closeModal()" title="Cadastro de Processo">
+<app-modal [isVisible]="isVisible" (closeModal)="closeModal()" title-modal="Cadastro de processos">
     <form [formGroup]="processForm" (ngSubmit)="ngSubmit()">
         <label for="number">Número</label>
         <input type="text" formControlName="number" id="number">
 
-        <div formGroupName="parties">
-            <label for="plaintiff">Autor</label>
-            <input type="text" formControlName="plaintiff" id="plaintiff">
+        <div formGroupName="parties" class="parties">
+            <div class="plaintiff">
+                <label for="plaintiff">Autor</label>
+                <input type="text" formControlName="plaintiff" id="plaintiff">
 
-            <label for="defendant">Réu</label>
-            <input type="text" formControlName="defendant" id="defendant">
+            </div>
+            <div class="defendant">
+                <label for="defendant">Réu</label>
+                <input type="text" formControlName="defendant" id="defendant">
+            </div>
         </div>
 
         <label for="court">Tribunal</label>
@@ -18,49 +22,54 @@
         <label for="bench">Vara</label>
         <input type="text" formControlName="bench" id="bench">
 
-        <label for="natureOfAction">Natureza da Ação</label>
-        <input type="text" formControlName="natureOfAction" id="natureOfAction">
-
         <label for="description">Descrição</label>
         <textarea formControlName="description" id="description"></textarea>
 
         <div class="progress">
-            <button (click)="addItem('progress')">Add Progress</button>
-            <div formArrayName="progress">
-                <div *ngFor="let item of getArrayControls('progress'); let i = index">
+            <button (click)="addItem('progress')" class="addItem">Status &plus;</button>
+            <div formArrayName="progress" >
+                <div *ngFor="let item of getArrayControls('progress'); let i = index" class="listItem">
                     <input type="text" [formControlName]="i" placeholder="Processo {{ i + 1 }}">
-                    <button (click)="removeItem('progress', i)">Remove Progress</button>
+                    <button (click)="removeItem('progress', i)" class="removeItem">
+                        <fa-icon [icon]="trash" [style.color]="'black'"></fa-icon>
+                    </button>
                 </div>
             </div>
         </div>
 
         <div class="documents">
-            <button (click)="addItem('documents')">Add Document</button>
+            <button (click)="addItem('documents')" class="addItem">Documentos &plus;</button>
             <div formArrayName="documents">
-                <div *ngFor="let item of getArrayControls('documents'); let i = index">
-                    <input type="file" [formControlName]="i" placeholder="Documentos {{ i + 1 }}">
-                    <button (click)="removeItem('documents', i)">Remove Document</button>
+                <div *ngFor="let item of getArrayControls('documents'); let i = index" class="listItem">
+                    <input type="file" id="documents" [formControlName]="i" placeholder="Documentos {{ i + 1 }}">
+                    <button (click)="removeItem('documents', i)" class="removeItem">
+                        <fa-icon [icon]="trash" [style.color]="'black'"></fa-icon>
+                    </button>
                 </div>
             </div>
         </div>
 
         <div class="deadlines">
-            <button (click)="addItem('deadlines')">Add Deadlines</button>
+            <button (click)="addItem('deadlines')" class="addItem">Prazos &plus;</button>
             <div formArrayName="deadlines">
-                <div *ngFor="let item of getArrayControls('deadlines'); let i = index">
+                <div *ngFor="let item of getArrayControls('deadlines'); let i = index" class="listItem">
                     <input type="text" placeholder="Categoria">
                     <input type="date" [formControlName]="i" placeholder="Prazo {{ i + 1 }}">
-                    <button (click)="removeItem('deadlines', i)">Remove Deadlines</button>
+                    <button (click)="removeItem('deadlines', i)" class="removeItem">
+                        <fa-icon [icon]="trash" [style.color]="'black'"></fa-icon>
+                    </button>
                 </div>
             </div>
         </div>
 
         <div class="tags">
-            <button (click)="addItem('tags')">Add Tags</button>
+            <button (click)="addItem('tags')" class="addItem">Tags &plus;</button>
             <div formArrayName="tags">
-                <div *ngFor="let item of getArrayControls('tags'); let i = index">
+                <div *ngFor="let item of getArrayControls('tags'); let i = index" class="listItem">
                     <input type="text" [formControlName]="i" placeholder="Tag {{ i + 1 }}">
-                    <button (click)="removeItem('tags', i)">Remove Tags</button>
+                    <button (click)="removeItem('tags', i)" class="removeItem">
+                        <fa-icon [icon]="trash" [style.color]="'black'"></fa-icon>
+                    </button>
                 </div>
             </div>
         </div>
