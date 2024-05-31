@@ -29,24 +29,71 @@
     justify-content: flex-start;
     background: $blue;
 
-    a {
-        padding: 1rem 2rem;
-        text-decoration: none;
+    .hamburger-menu {
+        display: none;
+        background: none;
+        border: none;
         color: #fff;
-        font-weight: 400;
+        font-size: 2rem;
+        padding: 1rem;
+        cursor: pointer;
 
-        &:hover {
-            background: $blue2;
+        @media (max-width: 768px) {
+            display: block;
+        }
+    }
+
+    .nav-links {
+        display: flex;
+        flex: 1;
+
+        a {
+            padding: 1rem 2rem;
+            text-decoration: none;
             color: #fff;
+            font-weight: 500;
+            font-size: 1.4rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+
+            &:hover {
+                background: $blue2;
+                color: #fff;
+            }
+
+            &.active {
+                background: $blue2;
+                color: #fff;
+            }
         }
 
-        &.active {
-            background: $blue2;
-            color: #fff;
+        @media (max-width: 768px) {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+
+            &.active {
+                display: flex;
+            }
+
+            a {
+                justify-content: center;
+                padding: 1rem;
+            }
         }
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
 main {
     padding: 1rem;
+}
+
+.icon {
+    font-size: .3rem;
 }

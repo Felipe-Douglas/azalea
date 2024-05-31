@@ -12,16 +12,30 @@
     </div>
 </header>
 <nav class="system-navigation">
-    <a routerLink="processs" class="active">
-        <fa-icon [icon]="files"></fa-icon>
-        Processos
-    </a>
-    <a routerLink="contratos">Link</a>
-    <a routerLink="calendar">
-        <fa-icon [icon]="calendar"></fa-icon>
-        Agenda
-    </a>
-    <a routerLink="#">Link</a>
+    <div class="button">
+        <button class="hamburger-menu" (click)="toggleMenu()">
+            <fa-icon [icon]="hamburger"></fa-icon>
+        </button>
+    </div>
+    <div class="nav-links" [ngClass]="{ 'active': menuActive }">
+        <a routerLink="home" (click)="closeMenu()">
+            <fa-icon [icon]="home"></fa-icon>
+            Inicio
+        </a>
+        <a routerLink="processos" class="active" (click)="closeMenu()">
+            <fa-icon [icon]="folder"></fa-icon>
+            Processos
+        </a>
+        <a routerLink="contratos" (click)="closeMenu()">
+            <fa-icon [icon]="files"></fa-icon>
+            Contratos
+        </a>
+        <a routerLink="calendar" (click)="closeMenu()">
+            <fa-icon [icon]="calendar"></fa-icon>
+            Agenda
+        </a>
+        <a routerLink="#" (click)="closeMenu()">Link</a>
+    </div>
 </nav>
 <main>
     <router-outlet></router-outlet>

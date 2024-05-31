@@ -17,7 +17,7 @@ export class FormProcessComponent implements OnInit {
   processForm!: FormGroup;
   progressOptions: string[] = ['Iniciado', 'Em Progresso', 'Concluído'];
 
-  isVisible: boolean = true;
+  isVisible: boolean = false;
   trash = faTrashCan
 
   
