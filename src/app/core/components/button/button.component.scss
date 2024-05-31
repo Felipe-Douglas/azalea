@@ -1,3 +1,19 @@
+@import './../../../../assets/scss/variables';
 button {
-    
+    border: none;
+    outline: none;
+
+
+    padding: 1rem 4rem;
+    background: $blue;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+
+    border-radius: 2.4rem;
+    transition: .4s ease-in-out;
+
+    &:hover {
+        background: $blue2;
+    }
 }
