@@ -7,7 +7,7 @@ import { HomeComponent } from './core/layouts/home/home.component';
 
 export const routes: Routes = [
     {path: "home", component: HomeComponent},
-    {path: "processs", component: ProcessesComponent},
-    {path: "contratos", component: ContractsComponent},
+    {path: "processess", component: ProcessesComponent},
+    {path: "contracts", component: ContractsComponent},
     {path: "calendar", component: CalendarComponent}
 ];

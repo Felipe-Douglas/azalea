@@ -18,19 +18,19 @@
         </button>
     </div>
     <div class="nav-links" [ngClass]="{ 'active': menuActive }">
-        <a routerLink="home" (click)="closeMenu()">
+        <a routerLink="home" routerLinkActive="active" (click)="closeMenu()">
             <fa-icon [icon]="home"></fa-icon>
             Inicio
         </a>
-        <a routerLink="processos" class="active" (click)="closeMenu()">
+        <a routerLink="processess" routerLinkActive="active" (click)="closeMenu()">
             <fa-icon [icon]="folder"></fa-icon>
             Processos
         </a>
-        <a routerLink="contratos" (click)="closeMenu()">
+        <a routerLink="contracts" routerLinkActive="active" (click)="closeMenu()">
             <fa-icon [icon]="files"></fa-icon>
             Contratos
         </a>
-        <a routerLink="calendar" (click)="closeMenu()">
+        <a routerLink="calendar" routerLinkActive="active" (click)="closeMenu()">
             <fa-icon [icon]="calendar"></fa-icon>
             Agenda
         </a>

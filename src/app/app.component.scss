@@ -7,19 +7,39 @@
     background: $blue;
     color: #fff;
 
+    .system-name {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
     .system-action-user {
         display: flex;
         gap: 2rem;
+
+        button {
+            border: none;
+            outline: none;
+            background: none;
+            display: flex;
+            gap: 0.6rem;
+            cursor: pointer;
+            color: #fff;
+            align-items: center;
+
+            .user-name {
+                font-size: 1.6rem;
+            }
+        }
     }
 
-    button {
-        border: none;
-        outline: none;
-        background: none;
-        display: flex;
-        gap: .6rem;
-        cursor: pointer;
-        color: #fff;
+    @media (max-width: 768px) {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 2.4rem;
+
+        .system-action-user {
+            gap: 1rem;
+        }
     }
 }
 
@@ -46,6 +66,7 @@
     .nav-links {
         display: flex;
         flex: 1;
+        transition: .4s ease-in-out;
 
         a {
             padding: 1rem 2rem;
