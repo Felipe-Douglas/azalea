@@ -1,21 +1,29 @@
 <button (click)="openModal()">Add Processo</button>
 <app-modal [isVisible]="isVisible" (closeModal)="closeModal()" title-modal="Cadastro de processos">
-    <form [formGroup]="processForm" (ngSubmit)="ngSubmit()">
+    <form [formGroup]="processForm">
         <label for="number">Número</label>
         <input type="text" formControlName="number" id="number" (keypress)="onKeyPress($event)">
 
         <div formGroupName="parties" class="parties">
-            <div class="plaintiff">
-                <label for="plaintiff">Autor</label>
-                <input type="text" formControlName="plaintiff" id="plaintiff">
+            <div class="row">
+                <div class="plaintiff">
+                    <label for="plaintiff">Autor</label>
+                    <input type="text" formControlName="plaintiff" id="plaintiff">
+                </div>
+                <div class="defendant">
+                    <label for="defendant">Réu</label>
+                    <input type="text" formControlName="defendant" id="defendant">
+                </div>
             </div>
-            <div class="plaintiffId">
-                <label for="plaintiffId">CPF do Autor</label>
-                <input type="text" formControlName="plaintiffId" id="plaintiffId" (keypress)="onKeyPress($event)">
-            </div>
-            <div class="defendant">
-                <label for="defendant">Réu</label>
-                <input type="text" formControlName="defendant" id="defendant">
+            <div class="row">
+                <div class="plaintiffId">
+                    <label for="plaintiffId">CPF do Autor</label>
+                    <input type="text" formControlName="plaintiffId" id="plaintiffId" (keypress)="onKeyPress($event)">
+                </div>
+                <div class="lawyerOAB">
+                    <label for="lawyerOAB">OAB do Advogado</label>
+                    <input type="text" formControlName="lawyerOAB" id="lawyerOAB" (keypress)="onKeyPress($event)">
+                </div>
             </div>
         </div>
 
@@ -30,21 +38,9 @@
 
         <label for="progress"></label>
         <select id="progress" formControlName="progress">
-            <option value="" disabled selected>Selecione o progresso</option>
+            <option value="" disabled selected>Selecione o progresso...</option>
             <option *ngFor="let option of progressOptions" [value]="option">{{ option }}</option>
         </select>
-
-        <!-- <div class="progress">
-            <button (click)="addItem('progress')" class="addItem">Status &plus;</button>
-            <div formArrayName="progress" >
-                <div  class="listItem">
-                    <input type="text" [formControlName]="i" placeholder="Processo {{ i + 1 }}">
-                    <button (click)="removeItem('progress', i)" class="removeItem">
-                        <fa-icon [icon]="trash" [style.color]="'black'"></fa-icon>
-                    </button>
-                </div>
-            </div>
-        </div> -->
 
         <div class="documents">
             <button (click)="addItem('documents')" class="addItem">Documentos &plus;</button>
@@ -88,6 +84,8 @@
                 <input [formControlName]="i" placeholder="Documento {{ i + 1}}">
             </div>
         </div> -->
+
+        <app-btn btn-text="Enviar" (submit)="ngSubmit()"></app-btn>
 
     </form>
 </app-modal>

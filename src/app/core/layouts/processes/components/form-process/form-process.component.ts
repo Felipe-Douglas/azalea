@@ -4,11 +4,12 @@ import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } fr
 import { ModalComponent } from '../../../../components/modal/modal.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faMinus, faTrash, faTrashCan, faTrashRestoreAlt } from '@fortawesome/free-solid-svg-icons';
+import { ButtonComponent } from '../../../../components/button/button.component';
 
 @Component({
   selector: 'form-process',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ModalComponent, FontAwesomeModule],
+  imports: [CommonModule, ReactiveFormsModule, ModalComponent, FontAwesomeModule, ButtonComponent],
   templateUrl: './form-process.component.html',
   styleUrl: './form-process.component.scss'
 })
@@ -20,15 +21,14 @@ export class FormProcessComponent implements OnInit {
   trash = faTrashCan
 
   
-  constructor(private formBuilder: FormBuilder) {}
-
-  ngOnInit(): void {
+  constructor(private formBuilder: FormBuilder) {
     this.processForm = this.formBuilder.group({
       number: ['', Validators.required],
       parties: this.formBuilder.group({
         plaintiff: ['', Validators.required],
         plaintiffId: ['', Validators.required],
-        defendant: ['', Validators.required]
+        defendant: ['', Validators.required],
+        lawyerOAB: ['', Validators.required]
       }),
       court: ['', Validators.required],
       bench: ['', Validators.required],
@@ -40,6 +40,8 @@ export class FormProcessComponent implements OnInit {
       tags: this.formBuilder.array([])
     });
   }
+
+  ngOnInit(): void {}
 
   addItem(arrayName: string): void {
     const array = this.processForm.get(arrayName) as FormArray;
@@ -57,7 +59,6 @@ export class FormProcessComponent implements OnInit {
 
   openModal() {
     this.isVisible = true;
-    console.log("Ola");
   }
 
   closeModal() {

@@ -12,6 +12,7 @@ import { faBell, faFileLines, faFolder, faUser } from '@fortawesome/free-solid-s
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  title = "azalea"
   user = faUser
   bell = faBell
 
