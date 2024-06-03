@@ -1,29 +1,20 @@
 import { CommonModule, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
-import { faBell, faFileLines, faFolder, faHome, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, FontAwesomeModule, CommonModule, NgClass],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule, NgClass],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = "azalea"
-  user = faUser
-  bell = faBell
-
-  home = faHome
-  folder = faFolder
-  files = faFileLines
-  calendar = faCalendarAlt
-  hamburger = faBars;
 
   menuActive: boolean = false;
+
+  constructor(public authService: AuthService) { }
 
   toggleMenu(): void {
     this.menuActive = !this.menuActive;

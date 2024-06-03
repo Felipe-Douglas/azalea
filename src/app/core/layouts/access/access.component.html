@@ -1,0 +1,12 @@
+<div class="system-header"></div>
+<section class="form-access">
+    <form [formGroup]="accessForm">
+        <label for="email">Email: </label>
+        <input type="email" formControlName="email" id="email">
+    
+        <label for="password">Password: </label>
+        <input type="password" formControlName="password" id="password">
+    
+        <app-btn btn-text="Entrar" (submit)="ngSubmit()"></app-btn>
+    </form>
+</section>

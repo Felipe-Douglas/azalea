@@ -1,4 +1,8 @@
-<button (click)="openModal()">Add Processo</button>
+<button (click)="openModal()" class="addProcess" title="Adicionar Processo">
+    <span class="material-symbols-outlined">
+        add
+    </span>
+</button>
 <app-modal [isVisible]="isVisible" (closeModal)="closeModal()" title-modal="Cadastro de processos">
     <form [formGroup]="processForm">
         <label for="number">Número</label>
@@ -43,37 +47,43 @@
         </select>
 
         <div class="documents">
-            <button (click)="addItem('documents')" class="addItem">Documentos &plus;</button>
+            <button (click)="addItem('documents')" class="addItem">Documentos <span style="font-weight: 800;">&plus;</span></button>
             <div formArrayName="documents">
                 <div *ngFor="let item of getArrayControls('documents'); let i = index" class="listItem">
                     <input type="file" id="documents" [formControlName]="i" placeholder="Documentos {{ i + 1 }}">
                     <button (click)="removeItem('documents', i)" class="removeItem">
-                        <fa-icon [icon]="trash" [style.color]="'black'"></fa-icon>
+                        <span class="material-symbols-outlined" style="color: red">
+                            remove
+                        </span>
                     </button>
                 </div>
             </div>
         </div>
 
         <div class="deadlines">
-            <button (click)="addItem('deadlines')" class="addItem">Prazos &plus;</button>
+            <button (click)="addItem('deadlines')" class="addItem">Prazos <span style="font-weight: 800;">&plus;</span></button>
             <div formArrayName="deadlines">
                 <div *ngFor="let item of getArrayControls('deadlines'); let i = index" class="listItem">
                     <input type="text" placeholder="Categoria">
                     <input type="date" [formControlName]="i" placeholder="Prazo {{ i + 1 }}">
                     <button (click)="removeItem('deadlines', i)" class="removeItem">
-                        <fa-icon [icon]="trash" [style.color]="'black'"></fa-icon>
+                        <span class="material-symbols-outlined" style="color: red">
+                            remove
+                        </span>
                     </button>
                 </div>
             </div>
         </div>
 
         <div class="tags">
-            <button (click)="addItem('tags')" class="addItem">Tags &plus;</button>
+            <button (click)="addItem('tags')" class="addItem">Tags <span style="font-weight: 800;">&plus;</span></button>
             <div formArrayName="tags">
                 <div *ngFor="let item of getArrayControls('tags'); let i = index" class="listItem">
                     <input type="text" [formControlName]="i" placeholder="Tag {{ i + 1 }}">
                     <button (click)="removeItem('tags', i)" class="removeItem">
-                        <fa-icon [icon]="trash" [style.color]="'black'"></fa-icon>
+                        <span class="material-symbols-outlined" style="color: red">
+                            remove
+                        </span>
                     </button>
                 </div>
             </div>

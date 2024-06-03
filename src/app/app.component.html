@@ -1,40 +1,53 @@
-<header class="system-header container">
+<!-- app.component.html -->
+<header class="system-header container" *ngIf="authService.isLoggedIn()">
     <span class="system-name">Azalea</span>
-    <!-- <span class="system-company">Company name</span> -->
     <div class="system-action-user">
         <button class="system-user-notify">
-            <fa-icon [icon]="bell"></fa-icon>
+            <span class="material-symbols-outlined">
+                notifications
+            </span>
         </button>
         <button class="system-user">
-            <fa-icon [icon]="user"></fa-icon>
+            <span class="material-symbols-outlined" style="fill: #fff">
+                person
+            </span>
             <span class="user-name">Maria Eduarda</span>
         </button>
     </div>
 </header>
-<nav class="system-navigation">
+<nav class="system-navigation" *ngIf="authService.isLoggedIn()">
     <div class="button">
         <button class="hamburger-menu" (click)="toggleMenu()">
-            <fa-icon [icon]="hamburger"></fa-icon>
+            <span class="material-symbols-outlined">
+                menu
+            </span>
         </button>
     </div>
     <div class="nav-links" [ngClass]="{ 'active': menuActive }">
         <a routerLink="home" routerLinkActive="active" (click)="closeMenu()">
-            <fa-icon [icon]="home"></fa-icon>
+            <span class="material-symbols-outlined">
+                home
+            </span>
             Inicio
         </a>
         <a routerLink="processess" routerLinkActive="active" (click)="closeMenu()">
-            <fa-icon [icon]="folder"></fa-icon>
+            <span class="material-symbols-outlined">
+                folder
+            </span>
             Processos
         </a>
         <a routerLink="contracts" routerLinkActive="active" (click)="closeMenu()">
-            <fa-icon [icon]="files"></fa-icon>
+            <span class="material-symbols-outlined">
+                contract
+            </span>
             Contratos
         </a>
         <a routerLink="calendar" routerLinkActive="active" (click)="closeMenu()">
-            <fa-icon [icon]="calendar"></fa-icon>
+            <span class="material-symbols-outlined">
+                calendar_month
+            </span>
             Agenda
         </a>
-        <a routerLink="#" (click)="closeMenu()">Link</a>
     </div>
 </nav>
 <main>

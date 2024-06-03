@@ -2,14 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ModalComponent } from '../../../../components/modal/modal.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faMinus, faTrash, faTrashCan, faTrashRestoreAlt } from '@fortawesome/free-solid-svg-icons';
 import { ButtonComponent } from '../../../../components/button/button.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DataService } from '../../../../services/data.service';
 
 @Component({
   selector: 'form-process',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ModalComponent, FontAwesomeModule, ButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, ModalComponent, ButtonComponent, HttpClientModule],
   templateUrl: './form-process.component.html',
   styleUrl: './form-process.component.scss'
 })
@@ -18,10 +18,10 @@ export class FormProcessComponent implements OnInit {
   progressOptions: string[] = ['Iniciado', 'Em Progresso', 'Concluído'];
 
   isVisible: boolean = false;
-  trash = faTrashCan
 
-  
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private dataService: DataService) { }
+
+  ngOnInit(): void {
     this.processForm = this.formBuilder.group({
       number: ['', Validators.required],
       parties: this.formBuilder.group({
@@ -32,7 +32,7 @@ export class FormProcessComponent implements OnInit {
       }),
       court: ['', Validators.required],
       bench: ['', Validators.required],
-      natureOfAction: ['', Validators.required],
+      // natureOfAction: ['', Validators.required],
       description: [''],
       progress: ['', Validators.required],
       documents: this.formBuilder.array([]),
@@ -40,8 +40,6 @@ export class FormProcessComponent implements OnInit {
       tags: this.formBuilder.array([])
     });
   }
-
-  ngOnInit(): void {}
 
   addItem(arrayName: string): void {
     const array = this.processForm.get(arrayName) as FormArray;
@@ -76,10 +74,17 @@ export class FormProcessComponent implements OnInit {
   }
 
   ngSubmit() {
-    if(this.processForm.valid) {
-      console.log(this.processForm.value);
-    }else {
-      console.log('Form Invalid');
+    if (this.processForm.valid) {
+      this.dataService.postData(this.processForm.value, "/process").subscribe(
+        res => {
+          console.log('Form submitted successfully', res);
+        },
+        err => {
+          console.error('Error submitting form', err);
+        }
+      );
+    } else {
+      console.error("Error");
     }
   }
 
